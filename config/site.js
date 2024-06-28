@@ -6,32 +6,32 @@ export const siteConfig = {
       label: "Home",
       href: "/",
     },
-    {
-      label: "Docs",
-      href: "/docs",
-    },
+    // {
+    //   label: "Docs",
+    //   href: "/docs",
+    // },
     {
       label: "Blog",
       href: "/blog",
     },
-    {
-      label: "About",
-      href: "/about",
-    },
+    // {
+    //   label: "About",
+    //   href: "/about",
+    // },
   ],
   navMenuItems: [
-    {
-      label: "Docs",
-      href: "/docs",
-    },
+    // {
+    //   label: "Docs",
+    //   href: "/docs",
+    // },
     {
       label: "Blog",
       href: "/blog",
     },
-    {
-      label: "About",
-      href: "/about",
-    },
+    // {
+    //   label: "About",
+    //   href: "/about",
+    // },
     {
       label: "Logout",
       href: "/logout",
