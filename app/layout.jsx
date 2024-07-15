@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   const darkMode = useDarkMode(false);
   return (
-    <html suppressHydrationWarning lang="en">
+    <html lang="en">
       <head />
       <body
         className={clsx(
