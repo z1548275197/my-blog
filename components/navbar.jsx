@@ -14,11 +14,14 @@ import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
+import { usePathname } from 'next/navigation'
+
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitcher } from "@/components/theme-switch";
 
 export const Navbar = () => {
+  const pathname = usePathname();
   const searchInput = (
     <Input
       aria-label="Search"
@@ -33,7 +36,6 @@ export const Navbar = () => {
       }
       labelPlacement="outside"
       placeholder="Search..."
-
       type="search"
     />
   );
@@ -43,16 +45,15 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
-            {/* <Logo /> */}
             <p className="font-bold text-inherit">时光岛</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
+            <NavbarItem key={item.href} isActive>
               <NextLink
                 className={clsx(
-                  linkStyles({ color: "foreground" }),
+                  linkStyles({ color: pathname === item.href ? "secondary" : "foreground" }),
                   "data-[active=true]:text-primary data-[active=true]:font-medium",
                 )}
                 color="foreground"

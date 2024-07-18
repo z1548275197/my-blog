@@ -2,7 +2,6 @@
 import { title, subtitle } from "@/components/primitives";
 import { Card, CardHeader, CardBody, CardFooter, Divider, Avatar, Button } from '@nextui-org/react';
 import { getAllBlogs } from '@/api/post';
-import NextLink from "next/link";
 import dayjs from 'dayjs';
 
 export default async function Blog() {
@@ -12,13 +11,8 @@ export default async function Blog() {
   return (
     <div className="h-screen">
       <div className="mb-2">
-        <NextLink href='/blog/edit'>
-          <Button color="primary">
-            新建博客
-          </Button>
-        </NextLink>
+        <Button color="primary">新建博客</Button>
       </div>
-
       {
         blogs.map((item) => {
           return (
@@ -40,7 +34,7 @@ export default async function Blog() {
           )
         })
       }
-    </div >
+    </div>
   )
 }
 

@@ -27,7 +27,7 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          `min-h-screen bg-background font-sans antialiased text-default-foreground`,
+          `min-h-screen bg-background font-sans antialiased text-default-foreground border-b-slate-200`,
           darkMode.value ? 'dark' : 'light',
         )}
       >
