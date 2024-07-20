@@ -15,7 +15,8 @@ export async function GET(request, context) {
 }
 
 export async function POST(request) {
-  console.log('到我这里')
+  console.log('到我这里', request)
+
   return NextResponse.json({ aaa: 111 }, {
     status: 200,
     headers: {
