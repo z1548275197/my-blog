@@ -1,10 +1,16 @@
 "use client";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { loadCSS, loadScript } from '@/utils/utils';
-
+import { Button, Input } from '@nextui-org/react';
+import { saveBlog } from '@/api/post';
+import { useSetState } from 'ahooks';
 
 export default function EditPage() {
   const vditorRef = useRef(null);
+  const [state, setState] = useSetState({
+    title: '',
+    content: ''
+  });
 
   const resizeImages = () => {
     const content = document.getElementById('content');
@@ -26,7 +32,7 @@ export default function EditPage() {
         pin: true,
       },
       upload: {
-        url: '/api/upload', // 上传url
+        url: '/api/post/upload', // 上传url
         accept: 'image/jpeg,image/png,image/gif,image/jpg,image/bmp', // 图片格式
         max: 2 * 1024 * 1024,  // 控制大小
         multiple: false, // 是否允许批量上传
@@ -86,6 +92,21 @@ Enjoy using Vditor's WYSIWYG mode!
       });
   }
 
+  const saveContent = async () => {
+    const markdownContent = vditorRef.current.getValue();
+    const response = await fetch('/api/post/save', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: state.title,
+        content: markdownContent,
+        author: 'test_user1'
+      })
+    });
+  }
+
 
   useEffect(() => {
     loadSource();
@@ -93,8 +114,13 @@ Enjoy using Vditor's WYSIWYG mode!
 
   return (
     <div>
-      我是编辑页面
+      <Input className='mb-2' size='sm' type="email" label="标题" placeholder="请输入文章标题" onValueChange={(val) => {
+        setState({
+          title: val
+        })
+      }} />
       <div className='h-400 mt-100' id='content'></div>
+      <Button className='mt-2' size="sm" color="primary" onClick={saveContent}>保存</Button>
     </div>
   )
 }

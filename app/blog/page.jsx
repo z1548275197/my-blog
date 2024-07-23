@@ -22,7 +22,7 @@ export default async function Blog() {
       {
         blogs.map((item) => {
           return (
-            <Card className="w-full" key={item.id}>
+            <Card className="w-full mb-4" key={item.id}>
               <CardHeader className="flex gap-3">
                 <div className="flex flex-col">
                   <p className="text-md">{item.title}</p>
