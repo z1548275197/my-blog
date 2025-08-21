@@ -13,7 +13,7 @@ export default async function Blog() {
     <div className="h-screen">
       <div className="mb-2">
         <NextLink href='/blog/edit'>
-          <Button color="primary">
+          <Button color="secondary">
             新建博客
           </Button>
         </NextLink>

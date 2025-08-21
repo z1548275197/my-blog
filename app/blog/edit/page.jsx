@@ -1,15 +1,19 @@
 "use client";
 import { useEffect, useRef, useState } from 'react';
 import { loadCSS, loadScript } from '@/utils/utils';
-import { Button, Input } from '@nextui-org/react';
+import { Button, Input, CircularProgress } from '@nextui-org/react';
 import { saveBlog } from '@/api/post';
 import { useSetState } from 'ahooks';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function EditPage() {
   const vditorRef = useRef(null);
   const [state, setState] = useSetState({
     title: '',
-    content: ''
+    content: '',
+    isLoad: false
   });
 
   const resizeImages = () => {
@@ -61,17 +65,21 @@ export default function EditPage() {
       toolbar: ['emoji', 'br', 'bold', 'line', 'headings', 'italic', 'strike', 'quote', 'list',
         'code', 'insert-after', 'undo', 'link', 'table', 'help', 'upload'],
       after: () => {
-        vditor.setValue(`
-# Welcome to Vditor WYSIWYG Example
+        //         vditor.setValue(`
+        // # Welcome to Vditor WYSIWYG Example
 
-This is a **WYSIWYG** (What You See Is What You Get) example using the Vditor editor.
+        // This is a **WYSIWYG** (What You See Is What You Get) example using the Vditor editor.
 
-In this mode, you can directly edit the content in the editor area, without needing to know Markdown syntax.
+        // In this mode, you can directly edit the content in the editor area, without needing to know Markdown syntax.
 
-Try typing or formatting the text, and you'll see the changes reflected in real-time.
+        // Try typing or formatting the text, and you'll see the changes reflected in real-time.
 
-Enjoy using Vditor's WYSIWYG mode!
-        `);
+        // Enjoy using Vditor's WYSIWYG mode!
+        //         `);
+        console.log('加载完成了')
+        setState({
+          isLoad: true
+        });
       },
     });
     vditorRef.current = vditor;
@@ -94,6 +102,23 @@ Enjoy using Vditor's WYSIWYG mode!
 
   const saveContent = async () => {
     const markdownContent = vditorRef.current.getValue();
+    if (!state.title) {
+      toast.warn('请输入标题!', {
+        hideProgressBar: true,
+        position: "top-center",
+        autoClose: 3000,
+      });
+      return;
+    }
+    if (!markdownContent) {
+      toast.warn('请输入文章内容!', {
+        hideProgressBar: true,
+        position: "top-center",
+        autoClose: 3000,
+      });
+      return;
+    }
+
     const response = await fetch('/api/post/save', {
       method: 'post',
       headers: {
@@ -105,22 +130,55 @@ Enjoy using Vditor's WYSIWYG mode!
         author: 'test_user1'
       })
     });
+    console.log(response, '这是我的数据')
+    if (response) {
+      toast.success('操作成功!', {
+        hideProgressBar: true,
+        position: "top-center",
+        autoClose: 3000,
+      });
+      setTimeout(() => {
+        window.location.href = '/blog';
+      }, 3000);
+    }
   }
 
 
   useEffect(() => {
     loadSource();
-  }, [])
+  }, []);
 
   return (
     <div>
-      <Input className='mb-2' size='sm' type="email" label="标题" placeholder="请输入文章标题" onValueChange={(val) => {
-        setState({
-          title: val
-        })
-      }} />
+      {
+        state.isLoad && (
+          <Input className='mb-2' size='sm' type="email" label="标题" placeholder="请输入文章标题" onValueChange={(val) => {
+            setState({
+              title: val
+            })
+          }} />
+        )
+      }
       <div className='h-400 mt-100' id='content'></div>
-      <Button className='mt-2' size="sm" color="primary" onClick={saveContent}>保存</Button>
+      {
+        state.isLoad && (
+          <Button className='mt-2' size="sm" color="secondary" onClick={saveContent}>保存</Button>
+        )
+      }
+      {
+        !state.isLoad && (
+          <div className='text-center mt-6 w-full flex justify-center'>
+            <CircularProgress
+              classNames={{
+                svg: "w-48 h-48",
+              }}
+              color="secondary"
+              label={<div className='text-secondary' id='content'>loading...</div>}
+            />
+          </div>
+        )
+      }
+      <ToastContainer></ToastContainer>
     </div>
   )
 }

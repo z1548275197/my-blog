@@ -19,6 +19,7 @@ specifiers:
   prisma: ^5.15.1
   react: ^18
   react-dom: ^18
+  react-toastify: ^10.0.5
   tailwindcss: ^3.4.4
   use-dark-mode: ^2.3.1
 
@@ -36,6 +37,7 @@ dependencies:
   next-themes: 0.2.1_6b56meepm6qeijghjgxx3txvza
   react: 18.3.1
   react-dom: 18.3.1_react@18.3.1
+  react-toastify: 10.0.5_nnrd3gsncyragczmpvfhocinkq
   use-dark-mode: 2.3.1_react@18.3.1
 
 devDependencies:
@@ -5138,6 +5140,17 @@ packages:
       use-latest: 1.2.1_react@18.3.1
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /react-toastify/10.0.5_nnrd3gsncyragczmpvfhocinkq:
+    resolution: {integrity: sha512-mNKt2jBXJg4O7pSdbNUfDdTsK9FIdikfsIE/yUCxbAEXl4HMyJaivrVFcn3Elvt5xvCQYhUZm+hqTIu1UXM3Pw==}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
+    dependencies:
+      clsx: 2.1.1
+      react: 18.3.1
+      react-dom: 18.3.1_react@18.3.1
     dev: false
 
   /react/18.3.1:

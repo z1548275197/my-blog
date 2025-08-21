@@ -1,12 +1,22 @@
 // app/page.tsx
 import { title, subtitle } from "@/components/primitives";
 import { Card, CardHeader, CardBody, CardFooter, Divider, Avatar, Button } from '@nextui-org/react';
-import { getAllBlogs } from '@/api/post';
 import dayjs from 'dayjs';
+import { useEffect } from "react";
 
 export default async function Blog() {
+  const blogs = [];
 
-  const blogs = await getAllBlogs();
+  const _getBlogList = async () => {
+    const res = await fetch('/api/post/save', {
+      method: 'get',
+    });
+    console.log(res, '博客列表')
+  }
+
+  useEffect(() => {
+    _getBlogList()
+  }, [])
 
   return (
     <div className="h-screen">
@@ -36,5 +46,6 @@ export default async function Blog() {
       }
     </div>
   )
+
 }
 
