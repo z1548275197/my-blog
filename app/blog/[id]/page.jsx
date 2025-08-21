@@ -1,4 +1,4 @@
-// app/page.tsx
+'use client';
 import { title, subtitle } from "@/components/primitives";
 import { Card, CardHeader, CardBody, CardFooter, Divider, Avatar, Button } from '@nextui-org/react';
 import dayjs from 'dayjs';
