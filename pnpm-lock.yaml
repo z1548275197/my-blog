@@ -8,11 +8,13 @@ specifiers:
   '@vercel/postgres': ^0.9.0
   ahooks: ^3.8.0
   autoprefixer: ^10.4.19
+  bcryptjs: ^3.0.2
   clsx: ^2.1.1
   dayjs: ^1.11.11
   eslint: ^8
   eslint-config-next: 14.2.4
   framer-motion: ^11.2.11
+  marked: 4.3.0
   next: 14.2.4
   next-themes: ^0.2.1
   postcss: ^8.4.38
@@ -30,9 +32,11 @@ dependencies:
   '@vercel/blob': 0.23.4
   '@vercel/postgres': 0.9.0
   ahooks: 3.8.0_react@18.3.1
+  bcryptjs: 3.0.2
   clsx: 2.1.1
   dayjs: 1.11.11
   framer-motion: 11.2.11_nnrd3gsncyragczmpvfhocinkq
+  marked: 4.3.0
   next: 14.2.4_nnrd3gsncyragczmpvfhocinkq
   next-themes: 0.2.1_6b56meepm6qeijghjgxx3txvza
   react: 18.3.1
@@ -3174,6 +3178,11 @@ packages:
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
+  /bcryptjs/3.0.2:
+    resolution: {integrity: sha512-k38b3XOZKv60C4E2hVsXTolJWfkGRMbILBIe2IBITXciy5bOsTKot5kDrf3ZfufQtQOUN5mXceUEpU1rTl9Uog==}
+    hasBin: true
+    dev: false
+
   /binary-extensions/2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
@@ -4598,6 +4607,12 @@ packages:
   /lru-cache/10.2.2:
     resolution: {integrity: sha512-9hp3Vp2/hFQUiIwKo8XCeFVnrg8Pk3TYNPIR7tJADKi5YfcF7vEaK7avFHTlSy3kOKYaJQaalfEo6YuXdceBOQ==}
     engines: {node: 14 || >=16.14}
+
+  /marked/4.3.0:
+    resolution: {integrity: sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==}
+    engines: {node: '>= 12'}
+    hasBin: true
+    dev: false
 
   /merge2/1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}

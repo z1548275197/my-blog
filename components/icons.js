@@ -43,3 +43,123 @@ export const SunFilledIcon = ({
     </g>
   </svg>
 );
+
+export const EyeFilledIcon = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+    <path
+      d="M21.25 9.15C18.94 5.52 15.56 3.5 12 3.5S5.06 5.52 2.75 9.15a1.65 1.65 0 000 1.7C5.06 14.48 8.44 16.5 12 16.5s6.94-2.02 9.25-5.65a1.65 1.65 0 000-1.7zM12 14.5A2.5 2.5 0 1114.5 12 2.5 2.5 0 0112 14.5z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+export const EyeSlashFilledIcon = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+    <path
+      d="M21.257 10.962c.474.62.474 1.457 0 2.076C19.764 14.987 16.182 19 12 19c-4.182 0-7.764-4.013-9.257-5.962a1.692 1.692 0 010-2.076C4.236 9.013 7.818 5 12 5c4.182 0 7.764 4.013 9.257 5.962z"
+      fill="currentColor"
+    />
+    <path
+      d="M12 16a4 4 0 100-8 4 4 0 000 8z"
+      fill="currentColor"
+    />
+    <path
+       d="M3 3l18 18"
+       stroke="currentColor"
+       strokeWidth="2"
+       strokeLinecap="round"
+     />
+   </svg>
+);
+
+export const ArrowLeftIcon = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+    <path
+      d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+export const EditIcon = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+    <path
+      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+export const DeleteIcon = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    height={size || height}
+    role="presentation"
+    viewBox="0 0 24 24"
+    width={size || width}
+    {...props}
+  >
+    <path
+      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+      fill="currentColor"
+    />
+  </svg>
+);

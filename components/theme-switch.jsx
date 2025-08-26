@@ -1,24 +1,28 @@
-'use client'; // uncomment this line if you're using Next.js App Directory Setup
+'use client';
 
 import { Switch } from '@nextui-org/switch'
-import useDarkMode from "use-dark-mode";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { MoonFilledIcon, SunFilledIcon } from '@/components/icons';
 
 export const ThemeSwitcher = () => {
-  const darkMode = useDarkMode(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
     <div>
       <Switch
-        defaultSelected
+        isSelected={theme === 'light'}
         size="lg"
         color="secondary"
-        onValueChange={(boolean) => {
-          if (boolean) {
-            darkMode.disable()
-          } else {
-            darkMode.enable()
-          }
+        onValueChange={(isSelected) => {
+          setTheme(isSelected ? 'light' : 'dark');
         }}
         thumbIcon={({ isSelected, className }) =>
           isSelected ? (

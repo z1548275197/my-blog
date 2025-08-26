@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -14,14 +15,28 @@ import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
-import { usePathname } from 'next/navigation'
-
+import { usePathname, useRouter } from 'next/navigation';
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "react-toastify";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitcher } from "@/components/theme-switch";
 
 export const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
+  const { isAuthenticated, user, logout, loading } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    toast.success("已成功登出");
+    router.push("/");
+  };
+
+  const handleLogin = () => {
+    router.push("/login");
+  };
+
   const searchInput = (
     <Input
       aria-label="Search"
@@ -74,10 +89,57 @@ export const Navbar = () => {
           <ThemeSwitcher />
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+        <NavbarItem className="hidden sm:flex">
+          {!loading && (
+            isAuthenticated ? (
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-default-600">
+                  欢迎，{user?.username}
+                </span>
+                <Button
+                  color="secondary"
+                  size="sm"
+                  onClick={handleLogout}
+                >
+                  登出
+                </Button>
+              </div>
+            ) : (
+              <Button
+                color="secondary"
+                size="sm"
+                onClick={handleLogin}
+              >
+                登录
+              </Button>
+            )
+          )}
+        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <ThemeSwitcher />
+        {!loading && (
+          isAuthenticated ? (
+            <Button
+              color="secondary"
+              variant="flat"
+              size="sm"
+              onClick={handleLogout}
+            >
+              登出
+            </Button>
+          ) : (
+            <Button
+              color="secondary"
+              variant="flat"
+              size="sm"
+              onClick={handleLogin}
+            >
+              登录
+            </Button>
+          )
+        )}
         <NavbarMenuToggle />
       </NavbarContent>
 
